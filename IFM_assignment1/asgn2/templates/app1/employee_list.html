@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block content %} There are a total of
+{{employee_list.count}} employees
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <table>
+          <tbody>
+            <tr>
+              <th>emp_id</th>
+              <th>name</th>
+              <th>address</th>
+              <th>email</th>
+              <th>position</th>
+              <th>employee_Employee_id</th>
+              <th>Info</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            {% for x in employee_list %}
+            <tr>
+              <td>{{x.emp_id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.address}}</td>
+              <td>{{x.email}}</td>
+              <td>{{x.position}}</td>
+              <td>{{x.employee_company_id.name}}</td>
+              <td>
+                <a href="{% url 'app1:EmployeeDetail' pk=x.pk %}"
+                  ><button type="button" class="btn btn-info">Info</button>
+                </a>
+              </td>
+              <td>
+                <a href="{% url 'app1:EmployeeUpdate' pk=x.pk %}">
+                  <button type="button" class="btn btn-warning">Edit</button>
+                </a>
+              </td>
+              <td>
+                <a href="{% url 'app1:EmployeeDelete' pk=x.pk %}">
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+        <a href="{% url 'app1:NewEmployee' %}">
+          <button type="button" class="btn btn-info">Add</button>
+        </a>
+  </div>
+</div>
+
+{% endblock %}

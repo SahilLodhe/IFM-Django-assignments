@@ -1,0 +1,8 @@
+table, th, td {
+    border: 1px solid;
+    width: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+body{
+    background-color: yellowgreen;
+}

@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block content %}
+There are a total of {{company_list.count}} employees
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <table>
+          <tbody>
+            <tr>
+              <th>company_id</th>
+              <th>domain</th>
+              <th>address</th>
+              <th>email</th>
+              <th>name</th>
+              <th>Info</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            {% for x in company_list %}
+            <tr>
+              <td>{{x.company_id}}</td>
+              <td>{{x.domain}}</td>
+              <td>{{x.address}}</td>
+              <td>{{x.email}}</td>
+              <td>{{x.name}}</td>
+              <td>
+                <a href="{% url 'app1:CompanyDetail' pk=x.pk %}"
+                  ><button type="button" class="btn btn-info">Info</button>
+                </a>
+              </td>
+              <td>
+                <a href="{% url 'app1:CompanyUpdate' pk=x.pk %}">
+                  <button type="button" class="btn btn-warning">Edit</button>
+                </a>
+              </td>
+
+              <td>
+                <a href="{% url 'app1:CompanyDelete' pk=x.pk %}">
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+        <a href="{% url 'app1:NewCompany' %}">
+          <button type="button" class="btn btn-info">Add</button>
+        </a>
+  </div>
+</div>
+{% endblock %}

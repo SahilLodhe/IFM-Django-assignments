@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- <a href="{% url 'app1:newStudent' %}">Create a new Student</a>
+    <a href="{% url 'app1:newEmployee' %}">Create a new Employee</a> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'Homepage' %}"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'app1:newEmployee' %}"
+              >Create new Employee</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'app1:newStudent' %}"
+              >Create new Student</a
+            >
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'logout'%}">Log Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}"
+              >Log In</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}"
+              >Sign Up</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+
+    <script src="" async defer></script>
+  </body>
+</html>
